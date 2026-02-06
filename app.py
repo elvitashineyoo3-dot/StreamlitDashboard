@@ -9,7 +9,7 @@ st.title("My Sales Dashboard")
 csv_path = r"C:\Users\HP\Downloads\Data_Visualization_Project\data.csv"
 
 try:
-    data = pd.read_csv(csv_path, encoding='cp1252')
+    data = pd.read_csv("data_small.csv", encoding='cp1252')
 except UnicodeDecodeError:
     st.error("Failed to read CSV. Try another encoding like 'latin1'.")
     st.stop()
@@ -90,4 +90,5 @@ if datetime_cols and numeric_cols:
             max_date = line_data.idxmax().strftime("%Y-%m-%d")
             st.write(f"Insight: The highest {value_col2} occurred on **{max_date}**.")
     except:
+
         st.warning("Could not create line chart. Make sure the selected column is a date or numeric type.")
